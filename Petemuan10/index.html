@@ -1,55 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Modular Login</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form id="loginForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <div>
-                <button type="reset" class="reset">Reset</button>
-                <button type="button" class="login" onclick="handleLogin()">Login</button>
-            </div>
-        </form>
-        <p id="message"></p>
-    </div>
+    <div id="content">Loading...</div>
 
     <script>
-        // Database
-        const model = {
-            mahasiswa: [
-                { username: 'izal', pin: 'izal123' },
-                { username: 'aprizal', pin: 'aprizal123' },
-                { username: 'shandy', pin: 'sandi123' },
-            ],
+        const pbo = {
+            // Model: Menyimpan data mahasiswa
+            model: {
+                mahasiswa: [
+                    { username: 'izal', pin: 'izal123' },
+                    { username: 'aprizal', pin: 'aprizal123' },
+                    { username: 'zull', pin: 'zull123' },
+                ],
+            },
+
+            // Services: Operasi data
+            services: {
+                // Fungsi untuk mendapatkan semua data mahasiswa
+                getter: function () {
+                    alert('Getter function called!');
+                    console.log(pbo.model.mahasiswa); // Menampilkan data mahasiswa di console
+                    return pbo.model.mahasiswa;
+                },
+
+                // Fungsi untuk menambahkan data baru
+                setter: function (newData) {
+                    alert('Setter function called!');
+                    pbo.model.mahasiswa.push(newData);
+                    console.log(`New data added:`, newData); // Menampilkan data baru yang ditambahkan
+                },
+            },
+
+            // View: Menyediakan antarmuka login
+            view: {
+                signform: function () {
+                    return `
+                        <div class="login-container">
+                            <h1>Login</h1>
+                            <form id="loginForm">
+                                <input type="text" id="username" placeholder="Username" required>
+                                <input type="password" id="pin" placeholder="Password" required>
+                                <div>
+                                    <button type="reset" class="reset" id="cancel">Reset</button>
+                                    <button type="button" class="login" id="login">Login</button>
+                                </div>
+                            </form>
+                            <p id="message" style="display: none;"></p>
+                        </div>
+                    `;
+                },
+            },
+
+            // Controller: Logika aplikasi
+            controller: {
+                signin: function () {
+                    document.getElementById('login').onclick = function () {
+                        const username = document.getElementById('username').value.trim();
+                        const pin = document.getElementById('pin').value.trim();
+                        const user = pbo.model.mahasiswa.find(
+                            (m) => m.username === username && m.pin === pin
+                        );
+
+                        if (user) {
+                            alert(`Welcome, ${username}!`);
+                            document.getElementById('message').style.display = 'none';
+                        } else {
+                            const message = document.getElementById('message');
+                            message.textContent = 'Invalid username or pin.';
+                            message.style.display = 'block';
+                        }
+                    };
+                },
+
+                signform: function () {
+                    document.getElementById('content').innerHTML = pbo.view.signform();
+                    this.signin();
+                    this.cancel();
+                },
+
+                cancel: function () {
+                    document.getElementById('cancel').onclick = function () {
+                        document.getElementById('username').value = '';
+                        document.getElementById('pin').value = '';
+                    };
+                },
+            },
         };
 
-        // Fungsi untuk menangani login
-        function handleLogin() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Cari data mahasiswa berdasarkan username dan pin
-            const user = model.mahasiswa.find(
-                (mhs) => mhs.username === username && mhs.pin === password
-            );
-
-            if (user) {
-                alert(`Selamat datang, ${username}!`);
-                message.style.display = 'none';
-                // Tambahkan logika redirect atau pengalihan halaman di sini
-            } else {
-                message.textContent = 'Username atau Password salah!';
-                message.style.display = 'block';
-            }
-        }
+        // Jalankan aplikasi
+        pbo.controller.signform();
     </script>
 </body>
 </html>
-
