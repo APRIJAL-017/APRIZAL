@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Motor & Sparepart</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Bagian Login -->
+    <div id="login-section">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Username" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <div>
+                    <button type="reset" class="reset" id="cancel">Reset</button>
+                    <button type="submit" class="login" id="login">Login</button>
+                </div>
+            </form>
+            <p id="error-message" style="color: red; display: none;">Username atau password salah.</p>
+        </div>
+    </div>
+
+    <!-- Bagian Halaman Utama -->
+    <div id="main-section" style="display: none;">
+        <header>
+            <h1>Zull Motor</h1>
+            <h2>Jual Motor Second Berkualitas</h2>
+            <nav>
+                <ul>
+                    <li><a href="#products">Produk</a></li>
+                    <li><a href="#cart">Keranjang</a></li>
+                    <li><a href="#" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="products">
+                <h2>Daftar Produk</h2>
+                <div class="product-list">
+                    <!-- Produk 1 -->
+                    <div class="product">
+                        <img src="https://i.pinimg.com/736x/f0/66/71/f0667107f3dc564ad1e7966f7dbaa1b5.jpg" alt="Motor">
+                        <h3>CBR 250RR</h3>
+                        <p>Harga: Rp75,000,000</p>
+                        <button onclick="addToCart('Motor Sport', 75000000)">Tambah ke Keranjang</button>
+                        <button onclick="showSpecs('CBR 250RR')">Lihat Spesifikasi</button>
+                    </div>
+
+                    <!-- Produk 2 -->
+                    <div class="product">
+                        <img src="https://i.pinimg.com/736x/93/cf/04/93cf04fcfe97e3b53e1dd9d1bae42a45.jpg" alt="Motor">
+                        <h3>CBR 250RR</h3>
+                        <p>Harga: Rp70,000,000</p>
+                        <button onclick="addToCart('Motor Sport', 70000000)">Tambah ke Keranjang</button>
+                        <button onclick="showSpecs('CBR 250RR.')">Lihat Spesifikasi</button>
+                    </div>
+
+                     <!-- Produk 3 -->
+                     <div class="product">
+                        <img src="https://i.pinimg.com/736x/9f/17/89/9f17896b14d74e4da63231a1dae2b2a9.jpg" alt="Motor">
+                        <h3>CBR 250RR</h3>
+                        <p>Harga: Rp70,000,000</p>
+                        <button onclick="addToCart('Motor Sport', 70000000)">Tambah ke Keranjang</button>
+                        <button onclick="showSpecs('CBR 250RR,')">Lihat Spesifikasi</button>
+                    </div>
+
+                     <!-- Produk 4 -->
+                     <div class="product">
+                        <img src="https://i.pinimg.com/736x/c9/92/bb/c992bb4aae6e3ae56f7c5f9e36fc996a.jpg" alt="Motor">
+                        <h3>CBR 250RR</h3>
+                        <p>Harga: Rp70,000,000</p>
+                        <button onclick="addToCart('Motor Sport', 70000000)">Tambah ke Keranjang</button>
+                        <button onclick="showSpecs('CBR 250RR..')">Lihat Spesifikasi</button>
+                    </div>
+
+                    <!-- Modal untuk Spesifikasi -->
+                    <div id="spec-modal" style="display: none;">
+                        <div class="modal-content">
+                            <span onclick="closeSpecs()" class="close">&times;</span>
+                            <h3 id="spec-title"></h3>
+                            <ul id="spec-details"></ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="cart">
+                <h2>Keranjang Belanja</h2>
+                <div id="cart-items">
+                    <p>Keranjang Anda kosong.</p>
+                </div>
+                <div id="total">
+                    <p>Total: Rp0</p>
+                </div>
+                <button onclick="checkout()">Checkout</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script> <!-- Menautkan file JavaScript eksternal -->
+</body>
+
+</html>
