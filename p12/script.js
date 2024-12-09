@@ -1,24 +1,24 @@
 // Definisikan spesifikasi produk
 const productSpecs = {
-    "CBR 250RR": {
+    "Tipe 1 CBR 250RR": {
         surat: "Lengkap",
         pajak: "Hidup",
         cc: "250cc",
         lainnya: "Warna: Orange Repsol, Transmisi: Manual"
     },
-    "CBR 250RR.": {
+    "Tipe 2 CBR 250RR": {
         surat: "STNK",
         pajak: "Hidup",
         cc: "250cc",
         lainnya: "Warna: Merah Putih, Transmisi: Manual"
     },
-    "CBR 250RR,": {
+    "Tipe 3 CBR 250RR": {
         surat: "STNK",
         pajak: "Hidup",
         cc: "250cc",
         lainnya: "Warna: Merah Hitam, Transmisi: Manual"
     },
-    "CBR 250RR..": {
+    "Tipe 4 CBR 250RR": {
         surat: "STNK",
         pajak: "Hidup",
         cc: "250cc",
