@@ -43,13 +43,48 @@
             <h2>Daftar Produk</h2>
             <div class="product-list">
                 <!--Produk Honda-->
+                <!--1-->
                 <div class="product honda">
-                    <img src="https://i.pinimg.com/736x/f0/66/71/f0667107f3dc564ad1e7966f7dbaa1b5.jpg"
+                    <img src="/Gambar/CBR250RR..webp"
                         alt="Motor CBR 250RR">
                     <h3>CBR 250RR</h3>
                     <p>Harga: Rp75,000,000</p>
                     <button onclick="addToCart('CBR 250RR', 75000000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('CBR 250RR')">Lihat Spesifikasi</button>
+                </div>
+                <!--2-->
+                <div class="product honda">
+                    <img src="/Gambar/CRF150L.webp"
+                        alt="CRF150L">
+                    <h3>CRF150L</h3>
+                    <p>Harga: Rp37,205,000</p>
+                    <button onclick="addToCart('CRF150L', 37205000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('CRF150L')">Lihat Spesifikasi</button>
+                </div>
+                <!--3-->
+                <div class="product honda">
+                    <img src="/Gambar/CB150R.webp"
+                        alt="CB150R Streetfire">
+                    <h3>CB150R Streetfire</h3>
+                    <p>Harga: Rp31,780,000</p>
+                    <button onclick="addToCart('CB150R Streetfire', 31780000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('CB150R Streetfire')">Lihat Spesifikasi</button>
+                </div>
+                <!--4-->
+                <div class="product honda">
+                    <img src="/Gambar/Beat.jpg" alt="Beat">
+                    <h3>Beat</h3>
+                    <p>Harga: Rp18,430,000</p>
+                    <button onclick="addToCart('Beat', 18430000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('Beat')">Lihat Spesifikasi</button>
+                </div>
+                <!--5-->
+                <div class="product honda">
+                    <img src="/Gambar/Vario160.webp" alt="Vario 160">
+                    <h3>Vario 160</h3>
+                    <p>Harga: Rp27,350,000</p>
+                    <button onclick="addToCart('Vario 160', 27350000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('Vario 160')">Lihat Spesifikasi</button>
                 </div>
 
                 <!--Produk Yamaha-->
@@ -61,6 +96,10 @@
                     <button onclick="addToCart('Yamaha Aerox', 28230000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('Aerox 155')">Lihat Spesifikasi</button>
                 </div>
+                <!--2-->
+                <!--3-->
+                <!--4-->
+                <!--5-->
 
                 <!--Produk Suzuki-->
                 <div class="product suzuki">
@@ -70,6 +109,10 @@
                     <button onclick="addToCart('Suzuki GSX-R150', 16500000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('GSX-R150')">Lihat Spesifikasi</button>
                 </div>
+                <!--2-->
+                <!--3-->
+                <!--4-->
+                <!--5-->
 
                 <!--Produk Vespa Metik-->
                 <div class="product vesmet">
@@ -80,6 +123,10 @@
                     <button onclick="addToCart('Vespa Sprint', 57000000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('Vespa Sprint')">Lihat Spesifikasi</button>
                 </div>
+                <!--2-->
+                <!--3-->
+                <!--4-->
+                <!--5-->
 
                 <!--Produk Kawasaki-->
                 <div class="product kawasaki">
@@ -90,6 +137,10 @@
                     <button onclick="addToCart('Ninja 250', 64000000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('Ninja 250')">Lihat Spesifikasi</button>
                 </div>
+                <!--2-->
+                <!--3-->
+                <!--4-->
+                <!--5-->
 
                 <!--Produk KTM-->
                 <div class="product ktm">
@@ -100,6 +151,10 @@
                     <button onclick="addToCart('KTM Duke 390', 120000000)">Tambah ke Keranjang</button>
                     <button onclick="showSpecs('KTM Duke 390')">Lihat Spesifikasi</button>
                 </div>
+                <!--2-->
+                <!--3-->
+                <!--4-->
+                <!--5-->
             </div>
         </section>
 
@@ -126,51 +181,82 @@
     <script>
         const productSpecs = {
             //Spesifikasi Honda
+            //1
             "CBR 250RR": {
                 surat: "Lengkap",
                 pajak: "Hidup",
                 cc: "250cc",
                 lainnya: "Warna: Orange Repsol, Transmisi: Manual"
             },
+            //2
+            //3
+            //4
+            //5
+
             //Spesifikasi Yamaha
+            //1
             "Aerox 155": {
                 surat: "Lengkap",
                 pajak: "Hidup",
                 cc: "250cc",
                 lainnya: "Warna: Abu-abu Hitam"
             },
+            //2
+            //3
+            //4
+            //5
 
             //Spesifikasi Suzuki
+            //1
             "GSX-R150": {
                 surat: "Lengkap",
                 pajak: "Hidup",
                 cc: "250cc",
                 lainnya: "Warna: Biru, Transmisi: Manual"
             },
+            //2
+            //3
+            //4
+            //5
 
             //Spesifikasi Vespa
+            //1
             "Vespa Sprint": {
                 surat: "STNK",
                 pajak: "Hidup",
                 cc: "150cc",
                 lainnya: "Warna: Kuning"
             },
+            //2
+            //3
+            //4
+            //5
 
             //Spesifikasi Kawasaki
+            //1
             "Ninja 250": {
                 surat: "Lengkap",
                 pajak: "Hidup",
                 cc: "250cc",
                 lainnya: "Warna: Hijau, Transmisi: Manual"
             },
+            //2
+            //3
+            //4
+            //5
 
             //Spesifikasi KTM
+            //1
             "KTM Duke 390": {
                 surat: "Lengkap",
                 pajak: "Hidup",
                 cc: "250cc",
                 lainnya: "Warna: Hitam Orange Sedikit Putih, Transmisi: Manual"
             },
+            //2
+            //3
+            //4
+            //5
 
         };
 
