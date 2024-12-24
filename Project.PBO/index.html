@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toko Motor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="splash-screen">
+        <h1>Selamat Datang</h1>
+        <p>Temukan produk terbaik hanya untuk Anda</p>
+        <button onclick="showMainSection()">Lihat Produk</button>
+    </div>
+
+    <main id="main-section">
+        <header>
+            <h1>Zull Motor</h1>
+            <h2>Jual Motor Baru dan Second Berkualitas</h2>
+            <nav>
+                <div style="display: flex; align-items: center; justify-content: flex-end; width: 100%;">
+                    <button class="view-cart" onclick="toggleCart()">Lihat Keranjang</button>
+                    <div class="menu">
+                        <button>☰ Menu</button>
+                        <ul class="dropdown">
+                            <li><a href="#" onclick="filterProducts('all')">Semua Produk</a></li>
+                            <li><a href="#" onclick="filterProducts('honda')">Honda</a></li>
+                            <li><a href="#" onclick="filterProducts('yamaha')">Yamaha</a></li>
+                            <li><a href="#" onclick="filterProducts('suzuki')">Suzuki</a></li>
+                            <li><a href="#" onclick="filterProducts('vesmet')">Vesmet</a></li>
+                            <li><a href="#" onclick="filterProducts('kawasaki')">Kawasaki</a></li>
+                            <li><a href="#" onclick="filterProducts('ktm')">KTM</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </header>
+
+        <section id="products">
+            <h2>Daftar Produk</h2>
+            <div class="product-list">
+                <!--Produk Honda-->
+                <div class="product honda">
+                    <img src="https://i.pinimg.com/736x/f0/66/71/f0667107f3dc564ad1e7966f7dbaa1b5.jpg"
+                        alt="Motor CBR 250RR">
+                    <h3>CBR 250RR</h3>
+                    <p>Harga: Rp75,000,000</p>
+                    <button onclick="addToCart('CBR 250RR', 75000000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('CBR 250RR')">Lihat Spesifikasi</button>
+                </div>
+
+                <!--Produk Yamaha-->
+                <div class="product yamaha">
+                    <img src="https://www.yamaha-motor.co.id/uploads/products/featured_image/2023102519190474792T91675.png"
+                        alt="Motor Yamaha">
+                    <h3>Yamaha Aerox 155</h3>
+                    <p>Harga: Rp28,230,000</p>
+                    <button onclick="addToCart('Yamaha Aerox', 28230000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('Aerox 155')">Lihat Spesifikasi</button>
+                </div>
+
+                <!--Produk Suzuki-->
+                <div class="product suzuki">
+                    <img src="https://www.suzukicdn.com/uploads/motorcycle/gsx-r150-blue-01.webp" alt="Suzuki GSX-R150">
+                    <h3>Suzuki GSX-R150</h3>
+                    <p>Harga: Rp16,500,000</p>
+                    <button onclick="addToCart('Suzuki GSX-R150', 16500000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('GSX-R150')">Lihat Spesifikasi</button>
+                </div>
+
+                <!--Produk Vespa Metik-->
+                <div class="product vesmet">
+                    <img src="https://imgcdn.oto.com/medium/gallery/exterior/87/1114/vespa-sprint-35688.jpg"
+                        alt="Vespa Sprint">
+                    <h3>Vespa Sprint</h3>
+                    <p>Harga: Rp57,000,000</p>
+                    <button onclick="addToCart('Vespa Sprint', 57000000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('Vespa Sprint')">Lihat Spesifikasi</button>
+                </div>
+
+                <!--Produk Kawasaki-->
+                <div class="product kawasaki">
+                    <img src="https://content2.kawasaki.com/ContentStorage/KMI/Products/5157/a483a201-841a-4199-9d62-8dfde2027709.png?h=220"
+                        alt="Kawasaki ZX-250RR">
+                    <h3>Ninja 250</h3>
+                    <p>Harga: Rp64,000,000</p>
+                    <button onclick="addToCart('Ninja 250', 64000000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('Ninja 250')">Lihat Spesifikasi</button>
+                </div>
+
+                <!--Produk KTM-->
+                <div class="product ktm">
+                    <img src="https://imgcdn.oto.com/medium/gallery/exterior/89/1588/ktm-rc-390-marketing-image-289539.jpg"
+                        alt="KTM Duke 390">
+                    <h3>KTM Duke 390</h3>
+                    <p>Harga: Rp120,000,000</p>
+                    <button onclick="addToCart('KTM Duke 390', 120000000)">Tambah ke Keranjang</button>
+                    <button onclick="showSpecs('KTM Duke 390')">Lihat Spesifikasi</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Keranjang Belanja</h2>
+            <div id="cart-items">
+                <p>Keranjang Anda kosong.</p>
+            </div>
+            <div id="total">
+                <p>Total: Rp0</p>
+            </div>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+    </main>
+
+    <div id="spec-modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSpecs()">&times;</span>
+            <h3 id="spec-title">Spesifikasi Produk</h3>
+            <div id="spec-details"></div>
+        </div>
+    </div>
+
+    <script>
+        const productSpecs = {
+            //Spesifikasi Honda
+            "CBR 250RR": {
+                surat: "Lengkap",
+                pajak: "Hidup",
+                cc: "250cc",
+                lainnya: "Warna: Orange Repsol, Transmisi: Manual"
+            },
+            //Spesifikasi Yamaha
+            "Aerox 155": {
+                surat: "Lengkap",
+                pajak: "Hidup",
+                cc: "250cc",
+                lainnya: "Warna: Abu-abu Hitam"
+            },
+
+            //Spesifikasi Suzuki
+            "GSX-R150": {
+                surat: "Lengkap",
+                pajak: "Hidup",
+                cc: "250cc",
+                lainnya: "Warna: Biru, Transmisi: Manual"
+            },
+
+            //Spesifikasi Vespa
+            "Vespa Sprint": {
+                surat: "STNK",
+                pajak: "Hidup",
+                cc: "150cc",
+                lainnya: "Warna: Kuning"
+            },
+
+            //Spesifikasi Kawasaki
+            "Ninja 250": {
+                surat: "Lengkap",
+                pajak: "Hidup",
+                cc: "250cc",
+                lainnya: "Warna: Hijau, Transmisi: Manual"
+            },
+
+            //Spesifikasi KTM
+            "KTM Duke 390": {
+                surat: "Lengkap",
+                pajak: "Hidup",
+                cc: "250cc",
+                lainnya: "Warna: Hitam Orange Sedikit Putih, Transmisi: Manual"
+            },
+
+        };
+
+        let cart = [];
+
+        function showMainSection() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('main-section').style.display = 'block';
+        }
+
+        function toggleCart() {
+            const cartSection = document.getElementById('cart');
+            cartSection.style.display = cartSection.style.display === 'block' ? 'none' : 'block';
+            renderCart();
+        }
+
+        function showSpecs(productName) {
+            const modal = document.getElementById("spec-modal");
+            const specTitle = document.getElementById("spec-title");
+            const specDetails = document.getElementById("spec-details");
+
+            const specs = productSpecs[productName];
+
+            if (specs) {
+                specTitle.textContent = `Spesifikasi: ${productName}`;
+                specDetails.innerHTML = `
+                    <li>Surat-Surat: ${specs.surat}</li>
+                    <li>Pajak: ${specs.pajak}</li>
+                    <li>CC Mesin: ${specs.cc}</li>
+                    <li>${specs.lainnya}</li>
+                `;
+
+                modal.style.display = "flex";
+            } else {
+                specDetails.innerHTML = "<li>Spesifikasi tidak tersedia.</li>";
+            }
+        }
+
+        function closeSpecs() {
+            document.getElementById("spec-modal").style.display = "none";
+        }
+
+        function addToCart(product, price) {
+            cart.push({ product, price });
+            alert(`${product} telah ditambahkan ke keranjang.`);
+        }
+
+        function renderCart() {
+            const cartItems = document.getElementById('cart-items');
+            const total = document.getElementById('total');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Keranjang Anda kosong.</p>';
+                total.innerHTML = '<p>Total: Rp0</p>';
+                return;
+            }
+
+            let cartHTML = '';
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                cartHTML += `<div>${item.product} - Rp${item.price.toLocaleString()} <button onclick="removeFromCart(${index})">Hapus</button></div>`;
+                totalPrice += item.price;
+            });
+
+            cartItems.innerHTML = cartHTML;
+            total.innerHTML = `<p>Total: Rp${totalPrice.toLocaleString()}</p>`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Keranjang kosong. Tambahkan produk untuk melanjutkan.");
+                return;
+            }
+            alert("Checkout berhasil. Terima kasih atas pembelian Anda di Zull Motor!");
+            cart = [];
+            renderCart();
+        }
+
+        function filterProducts(category) {
+            const allProducts = document.querySelectorAll('.product');
+            allProducts.forEach(product => {
+                if (category === 'all' || product.classList.contains(category)) {
+                    product.style.display = 'inline-block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
