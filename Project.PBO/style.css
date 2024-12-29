@@ -521,3 +521,51 @@ nav .menu {
     text-align: center;
     margin-bottom: 10px;
 }
+
+/*Media Social*/
+.social-icon {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.social-icon img {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Hover effect */
+.social-icon img:hover {
+    transform: scale(1.2);
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .social-icon {
+        top: 5px;
+        left: 5px;
+        gap: 8px;
+    }
+
+    .social-icon img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .social-icon {
+        top: 5px;
+        left: 5px;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .social-icon img {
+        width: 18px;
+        height: 18px;
+    }
+}
